@@ -1,24 +1,25 @@
 <html>
   <h1>Github Page Test</h1>
-  <div id='lightning-out'></div>
+  <div data-lightning-out="true"></div>
   <script src="https://touchstonedev-dev-ed.develop.my.site.com/TouchstoneLightningOut/lightning/lightning.out.js"></script>
   <script>
     const appName = 'c:LightningOutTest';
-    const componnentName = 'c:repairFinderLightningOut';
+    const componentName = 'c:repairFinderLightningOut';
     const lightningEndPoint = 'https://touchstonedev-dev-ed.develop.my.site.com/TouchstoneLightningOut';
-    const targetElementId = 'lightning-out';
+    const targetElementId = document.querySelector("[data-lightning-out]");
     const attributes = {};
 
     console.log('lightning: ', $Lightning);
-    
+    console.log('div: ', targetElementId);
+
     $Lightning.use(
         appName, // name of the Lightning app
         function () {
           // // Callback once framework and app loaded
           $Lightning.createComponent(
-            componnentName, // top-level component of your app
+            componentName, // top-level component of your app
             attributes, // attributes to set on the component when created
-            'lightning-out', // the DOM location to insert the component
+            targetElementId, // the DOM location to insert the component
             function (cmp) {
               // callback when component is created and active on the page
               console.log("created lightning component: ", cmp);
