@@ -9,21 +9,23 @@
     const targetElementId = 'lightning-out';
     const attributes = {};
 
-    $Lightning.use(
-        appName, // name of the Lightning app
-        function () {
-          // // Callback once framework and app loaded
-          // $Lightning.createComponent(
-          //   componnentName, // top-level component of your app
-          //   attributes, // attributes to set on the component when created
-          //   'lightning-out', // the DOM location to insert the component
-          //   function (cmp) {
-          //     // callback when component is created and active on the page
-          //     console.log("created lightning component: ", cmp);
-          //   }
-          // );
-        },
-        lightningEndPoint // Site endpoint
-      );
+    console.log('lightning: ', $Lightning);
+    
+    // $Lightning.use(
+    //     appName, // name of the Lightning app
+    //     function () {
+    //       // Callback once framework and app loaded
+    //       $Lightning.createComponent(
+    //         componnentName, // top-level component of your app
+    //         attributes, // attributes to set on the component when created
+    //         'lightning-out', // the DOM location to insert the component
+    //         function (cmp) {
+    //           // callback when component is created and active on the page
+    //           console.log("created lightning component: ", cmp);
+    //         }
+    //       );
+    //     },
+    //     lightningEndPoint // Site endpoint
+    //   );
   </script>
 </html>
