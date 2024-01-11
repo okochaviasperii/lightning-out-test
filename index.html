@@ -9,6 +9,29 @@
     const targetElementId = document.querySelector("[data-lightning-out]");
     const attributes = { uarn: 'test_UARN_12345' };
 
+    const tokenEndpoint = 'https://placesforpeople--tstone.sandbox.my.salesforce.com/services/oauth2/token';
+
+    const jwtPayload = {
+      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+      assertion: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIzTVZHOXZZTThKeUt3aktiUUJHWWY2NUhkVXBqTmxVbTh3MFd0Q0I0REJtQmpWVnU4STNtZl9ER3VGQ0dfbHdqVU9xWXYyZHVWU3Y3RVRQeHVEX19QIiwic3ViIjoicG9saW5hLnNodmFydHNAYXNwZXJpaS5jb20uaW50ZWdyYXRpb24udHN0b25lIiwiYXVkIjoiaHR0cHM6Ly90ZXN0LnNhbGVzZm9yY2UuY29tIiwiZXhwIjoiMTcwNTA2ODU4NiJ9.bqxt_7Ib8PeNkKlCw4xFP7ZMnaBr5QrXEhwEV6VvobGyxO6-KKGS2O_P9NrqYzH0OcQGP5045yGqhsxxYl6Uj-G9YgmiBrdBzvZaBJbsWEu9EVsydoAAZQdhyGPz0bHplaeM2HmKgE0IEl60zsFKAG6mv0E4AJAJ3QjAmms4KtPcHnHdZT20l26pxKzcoapS_M2aVwks_7j-GtXErhwcjnygcjdn2PcxGUUZwZ46aI1nO6JtOYsglhCse8WUReXGWZHvVyNzv2roO_EiH9YR15tUVSq2W_ZIGG7qeraHJM5CxDGjI5-5-_0pqr7mENvpgT1REnZJWo7o1esEXSb-zg',
+    };
+
+    fetch(tokenEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(jwtPayload),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Callback with the obtained access token
+        console.log('auth success: ', data);
+      })
+      .catch(error => {
+        console.error('Error fetching Salesforce JWT:', error);
+      });
+
     console.log('lightning: ', $Lightning);
     console.log('div: ', targetElementId);
 
